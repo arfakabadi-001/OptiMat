@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OptiMat Results</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: "Segoe UI", sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 30px;
+        }
+        h1 {
+            text-align: center;
+            color: #2c5364;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 22%;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        table {
+            width: 100%;
+            background: white;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+        th {
+            background: #2c5364;
+            color: white;
+        }
+        .top {
+            background: #e6f7ff;
+            font-weight: bold;
+        }
+        .chart-box {
+            width: 400px;
+            margin: 40px auto;
+        }
+        .actions {
+            text-align: center;
+            margin-top: 30px;
+        }
+        a {
+            text-decoration: none;
+            padding: 12px 20px;
+            background: #2c5364;
+            color: white;
+            border-radius: 8px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Optimization Dashboard</h1>
+
+<div class="stats">
+    <div class="card">
+        <h3>Total Materials</h3>
+        <p>{{ ranked|length + rejected|length }}</p>
+    </div>
+    <div class="card">
+        <h3>Shortlisted</h3>
+        <p>{{ ranked|length }}</p>
+    </div>
+    <div class="card">
+        <h3>Rejected</h3>
+        <p>{{ rejected|length }}</p>
+    </div>
+    <div class="card">
+        <h3>Best Choice</h3>
+        <p>{{ ranked[0][0].name if ranked else "N/A" }}</p>
+    </div>
+</div>
+
+<div class="chart-box">
+    <canvas id="pieChart"></canvas>
+</div>
+
+<table>
+<tr>
+    <th>Rank</th>
+    <th>Material</th>
+    <th>Score</th>
+</tr>
+{% for m, score in ranked %}
+<tr class="{{ 'top' if loop.index <= 3 else '' }}">
+    <td>{{ loop.index }}</td>
+    <td>{{ m.name }}</td>
+    <td>{{ "%.3f"|format(score) }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<div class="actions">
+    <a href="/download_csv">Download CSV</a>
+    <a href="/">Run Again</a>
+</div>
+
+<script>
+const ctx = document.getElementById('pieChart');
+new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['Shortlisted', 'Rejected'],
+        datasets: [{
+            data: [{{ ranked|length }}, {{ rejected|length }}],
+            backgroundColor: ['#2c5364', '#b0bec5']
+        }]
+    }
+});
+</script>
+
+</body>
+</html>
