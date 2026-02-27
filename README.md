@@ -1,54 +1,39 @@
-# OptiMat – Intelligent Material Selection & Optimization System
+# OptiMat – AI-Inspired Multi-Criteria Material Selection
 
-## Project Overview
-**OptiMat** is a Python-powered system designed to assist engineers, researchers, and students in **making data-driven material selection decisions**. Selecting the right material often involves evaluating multiple parameters and constraints, which can be time-consuming and prone to error. OptiMat solves this challenge by automating the filtering, ranking, and recommendation process, providing **optimized, reliable, and interpretable results**.
-
----
-
-## Problem Statement
-Engineering material selection can be complex:
-- Multiple materials with overlapping properties
-- Conflicting constraints (e.g., strength vs weight)
-- Manual analysis is time-consuming and error-prone
-
-**OptiMat addresses these problems by:**
-1. Allowing users to define **custom constraints** on material properties  
-2. Automatically **filtering materials** that meet the criteria  
-3. **Ranking the filtered materials** using a weighted scoring system  
-4. Delivering **clear recommendations** for informed engineering decisions  
-
-This ensures efficient, optimized, and reproducible material selection.
+**OptiMat** is an intelligent material selection system designed to help engineers choose the best materials for a given application based on multiple constraints and user-defined priorities. The system evaluates mechanical, economic, and environmental criteria, ranks the materials, and provides a comprehensive report.
 
 ---
 
-## Key Features
-- **Constraint-Based Filtering** – Define limits for material properties  
-- **Weighted Ranking & Scoring** – Prioritize materials based on importance  
-- **Modular Python Architecture** – Extensible and maintainable code  
-- **CSV-Based Data Handling** – Flexible input/output for materials  
-- **Flask Web Interface (Planned)** – Interactive UI for easy usage  
-- **Database Integration (Planned)** – Persistent storage for material data  
+## 🌟 Features
+
+- Multi-criteria decision-making using weighted scoring
+- Dynamic filtering of materials based on:
+  - Strength
+  - Density
+  - Cost
+  - Operating Temperature
+  - Corrosion Resistance
+  - Sustainability
+- Interactive **Web UI** using Flask with:
+  - Input form for constraints & weights
+  - Result dashboard with table and pie chart
+  - CSV export of results
+- CLI version available for quick evaluation
+- Database-driven material repository (SQLite)
 
 ---
 
-## Tech Stack
-- **Python 3.11** – Core programming language  
-- **Pandas** – Data manipulation and analysis  
-- **Matplotlib** – Optional visualizations for material comparisons  
-- **Flask** – Planned web interface for user-friendly interaction  
-- **SQLite/MySQL** – Planned database integration for persistence  
-- **Git & GitHub** – Version control and project management  
-- **VS Code** – Development environment  
+## 🛠 Problem Statement / Motivation
+
+Engineers often struggle to select the most suitable materials when multiple factors such as cost, strength, weight, and sustainability must be considered simultaneously. OptiMat addresses this by providing a **ranked list of materials** based on constraints and priorities, simplifying decision-making and saving design time.
 
 ---
 
-## Skills Demonstrated
-- Python programming and **modular code design**  
-- **Algorithmic problem-solving** and optimization logic  
-- **Data manipulation** and analysis with Pandas  
-- Constraint-based filtering and **weighted ranking algorithms**  
-- File handling with CSV datasets  
-- **Debugging** and systematic problem-solving  
-- **Version control** with Git & GitHub  
-- Web app design with Flask (planned)  
-- Database integration and scalable system design (planned)  
+## 🧰 Technology Stack
+
+- **Python 3.11**
+- **Flask** – Web framework for building the interactive UI
+- **SQLite** – Database for storing materials
+- **Pandas / NumPy** – For data handling and calculations
+- **Matplotlib / Chart.js** – Visualization of results
+- **HTML, CSS, JavaScript** – Front-end for a polished UI
